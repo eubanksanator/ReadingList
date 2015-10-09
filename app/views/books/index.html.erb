@@ -29,6 +29,11 @@
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <tr>
+      <% book.genres.each do |genre| %>
+        <td><%= genre.name %></td>
+        <% end %>
+      </tr>
     <% end %>
   </tbody>
 </table>
@@ -36,3 +41,7 @@
 <br>
 
 <%= link_to 'New Book', new_book_path %>
+
+<% @genres.each do |genre| %><br/>
+    <%= link_to genre.name, books_path(filter: genre.name) %><br/>
+<% end %>
